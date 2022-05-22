@@ -13,7 +13,7 @@ public class PrincepalAndInterestLoanProcessorTest {
     @Test
     void testCalcAnnualInterest() {
         int expected = new PrincepalAndInterestLoanProcessor().calcRepaymentNumber(LocalDate.of(2022, 5, 2),
-                LocalDate.of(2072, 5, 2));
+                LocalDate.of(2072, 4, 2));
         assertEquals(expected, 600);
     }
 
@@ -55,7 +55,7 @@ public class PrincepalAndInterestLoanProcessorTest {
     @Test
     void testCalcRepaymentDate() {
         LocalDate expected = new PrincepalAndInterestLoanProcessor().calcRepaymentDate(LocalDate.of(2022, 5, 2),
-                LocalDate.of(2022, 5, 2), 0);
+                LocalDate.of(2022, 5, 2), 1);
         assertEquals(expected, LocalDate.of(2022, 5, 2));
     }
 

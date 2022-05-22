@@ -8,6 +8,9 @@ import java.util.List;
 
 import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanDetails;
 
+/**
+ * ローン計算の計算式を実装します
+ */
 public class PrincepalAndInterestLoanProcessor {
 
     /**
@@ -18,7 +21,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @return 総返済回数
      */
     public int calcRepaymentNumber(LocalDate startDate, LocalDate endDate) {
-        return Math.toIntExact(ChronoUnit.MONTHS.between(startDate, endDate));
+        return Math.toIntExact(ChronoUnit.MONTHS.between(startDate, endDate)) + 1;
     }
 
     /**

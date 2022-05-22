@@ -27,14 +27,23 @@ import com.example.infrastructure.entity.LoanSimulateResultEntity;
 @Transactional
 public class PrincepalAndInterestLoanService {
 
-    // Beenからリポジトリの呼び出し
+    // Beenからローン計算結果永続化の為のリポジトリの呼び出し
     @Autowired
     LoanSimulateResultRepository loanSimulateResultRepository;
 
-    // Beenからリポジトリの呼び出し
+    // Beenからキャッシュフロー永続化の為のリポジトリの呼び出し
     @Autowired
     CashFlowRepository cashFlowRepository;
 
+    /**
+     * 元利均等ローン計算のユースケースを実装します
+     * ・計算インプットの作成
+     * ・計算処理
+     * ・データ永続化
+     * 
+     * @param loanRequest
+     * @return ローン計算の結果
+     */
     public LoanResponseDto calculatePrincepalAndInterestLoan(LoanRequestDto loanRequest) {
         // RequestDTOから計算ロジック用Conditionにデータを詰める
         calculateCondition condition = new calculateCondition(

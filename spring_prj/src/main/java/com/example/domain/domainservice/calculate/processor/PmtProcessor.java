@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 
 /**
- * PMTの計算式
+ * PMTの計算式を実装します
  * =(利率/12)*借入金額/(1-1/(1+利率/12)^(返済期間*12))
  */
 public class PmtProcessor {
@@ -19,17 +19,17 @@ public class PmtProcessor {
      * @return PMT値
      */
     public BigDecimal pmtCalculate(BigDecimal interestRate, int repaymentNumber, BigDecimal repaymentBalance) {
-        //
+        // 月金利を計算する
         BigDecimal monthlyRate = interestRate.divide(BigDecimal.valueOf(12), 50, RoundingMode.DOWN);
-        //
+        // 月利を計算する
         BigDecimal repaymentInterest = monthlyRate.multiply(repaymentBalance);
-        //
-        BigDecimal bbb = BigDecimal.valueOf(1)
+        // 
+        BigDecimal decimal = BigDecimal.valueOf(1)
                 .subtract(BigDecimal.valueOf(1)
                         .add(monthlyRate)
                         .pow(repaymentNumber));
 
-        return (repaymentInterest.subtract(repaymentInterest.divide(bbb, RoundingMode.DOWN)))
+        return (repaymentInterest.subtract(repaymentInterest.divide(decimal, RoundingMode.DOWN)))
                 .setScale(0, BigDecimal.ROUND_DOWN);
     }
 }

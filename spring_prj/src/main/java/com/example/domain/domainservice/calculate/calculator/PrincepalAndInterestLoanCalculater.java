@@ -10,14 +10,16 @@ import com.example.domain.domainservice.calculate.processor.PrincepalAndInterest
 import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanDetails;
 import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanResult;
 
-
+/**
+ * 元利均等型ローン計算式の組み立てを実装します
+ */
 public class PrincepalAndInterestLoanCalculater {
 
         /**
          * 元利均等型返済のキャッシュフローを作成します
          * 
          * @param condition
-         * @return
+         * @return ローン計算結果
          */
         public PrincepalAndInterestLoanResult calculate(calculateCondition condition) {
 

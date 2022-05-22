@@ -7,6 +7,10 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * キャッシュフロー確認のためのテストメソッド
+ * ・キャッシュフローのアサーションは未実装
+ */
 public class PmtProcessorTest {
     @Autowired
     PmtProcessor pmtProcessor;

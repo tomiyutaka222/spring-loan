@@ -88,9 +88,7 @@ public class PrincepalAndInterestLoanCalculater {
                                         repaymentNumber,
                                         // 今回の返済回数
                                         number);
-                        
-                        
-
+                                        
                         // 元本返済金額から返済残高を計算する
                         repaymentBalance = PrincepalAndInterestLoanProcessor.calcRepaymentBalance(
                                         // 現在の返済残高

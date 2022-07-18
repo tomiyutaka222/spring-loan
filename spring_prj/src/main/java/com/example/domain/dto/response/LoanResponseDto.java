@@ -3,7 +3,7 @@ package com.example.domain.dto.response;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanDetails;
+import com.example.domain.domainservice.calculate.vo.LoanCashFlowDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +22,5 @@ public class LoanResponseDto {
     // 総支払利息
     private BigDecimal totalInterestPaymentAmount;
     // 支払キャッシュフロー
-    private List<PrincepalAndInterestLoanDetails> princepalAndInterestLoanDetails;
+    private List<LoanCashFlowDetails> loanCashFlowDetails;
 }

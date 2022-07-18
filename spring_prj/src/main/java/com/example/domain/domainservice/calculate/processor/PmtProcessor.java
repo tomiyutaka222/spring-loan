@@ -18,7 +18,7 @@ public class PmtProcessor {
      * @param repaymentBalance 総返済額
      * @return PMT値
      */
-    public BigDecimal pmtCalculate(BigDecimal interestRate, int repaymentNumber, BigDecimal repaymentBalance) {
+    public static BigDecimal pmtCalculate(BigDecimal interestRate, int repaymentNumber, BigDecimal repaymentBalance) {
         // 月金利を計算する
         BigDecimal monthlyRate = interestRate.divide(BigDecimal.valueOf(12), 50, RoundingMode.DOWN);
         // 月利を計算する

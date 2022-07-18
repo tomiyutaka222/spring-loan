@@ -18,5 +18,5 @@ public class PrincepalAndInterestLoanResult {
     // 総支払利息
     private BigDecimal totalInterestPaymentAmount;
     // 支払キャッシュフロー
-    private List<PrincepalAndInterestLoanDetails> princepalAndInterestLoanDetails;
+    private List<LoanCashFlowDetails> LoanCashFlowDetails;
 }

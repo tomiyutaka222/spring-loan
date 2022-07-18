@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>ローンシミュレート</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<script th:src="@{/js/test.js}"></script> 
+<body>
+    <header>
+        <span class="header-title">ローンシミュレート</span>
+    </header>
+    <main>
+        <form th:action="@{/calculate}" method="post">
+            ユーザ名 : <input type="text" name="userName" id=""> <br>
+            総返済金額 : <input type="text" name="totalBorrowingAmount" id=""> <br>
+            年利 : <input type="text" name="annualInterest" id=""> <br>
+            手数料 : <input type="text" name="commission" id=""> <br>
+            返済開始日 : <input type="date" name="repaymentStartDate" id=""> <br>
+            返済終了日 : <input type="date" name="repaymentEndDate" id=""> <br>
+            <input type="submit" value="シミュレートしてみる"/>
+        </form>
+        <th:block th:if="${currentUri == '/'}"></th:block>
+        <th:block th:if="${currentUri == '/calculate'}">
+            <!-- <p></p>
+            <p></p>
+            <p></p>
+            <p></p> -->
+            <table>
+                <thead>
+                    <td>氏名</td>
+                    <td>総返済回数</td>
+                    <td>総返済金額</td>
+                    <td>総返済利息</td>
+                </thead>
+                <tbody>
+                    <td th:text=${loanResponseDto.userName}></td>
+                    <td th:text=${loanResponseDto.repaymentNumber}></td>
+                    <td th:text=${loanResponseDto.totalPaymentAmount}></td>
+                    <td th:text=${loanResponseDto.totalInterestPaymentAmount}></td>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                        <td>返済回数</td>
+                        <td>返済元本</td>
+                        <td>返済利息</td>
+                        <td>返済金額</td>
+                        <td>返済残高</td>
+                        <td>返済日</td>
+                        <td>適用利息</td>
+                </thead>
+                <tbody>
+                    <tr th:each="cashFlow : ${loanResponseDto.loanCashFlowDetails}">
+                        <td th:text="${cashFlow.repaymentNumber}"></td>
+                        <td th:text="${cashFlow.principalRepaymentAmount}"></td>
+                        <td th:text="${cashFlow.monthlyInterest}"></td>
+                        <td th:text="${cashFlow.repaymentAmount}"></td>
+                        <td th:text="${cashFlow.repaymentBalance}"></td>
+                        <td th:text="${cashFlow.repaymentDate}"></td>
+                        <td th:text="${cashFlow.repaymentInterest}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </th:block>
+    </main>
+    <footer>
+        <small>©2022 Loan Simulator ZANNI</small>
+    </footer>    
+</body>
+</html>

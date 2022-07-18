@@ -98,18 +98,19 @@ public class PrincepalAndInterestLoanService {
         List<CashFlowEntity> cashFlowEntity = new ArrayList<CashFlowEntity>();
 
         // キャッシュフローをエンティティに詰める
-        for(int i = 0;i < 600;i++) {
+        // キャッシュフローをエンティティに詰める
+        for(int i = 0;i < calculateResult.getLoanCashFlowDetails().size();i++) {
             cashFlowEntity.add(
                 new CashFlowEntity(
                     0,
                     saveLoanSimulateResultData.get(0).getId(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getRepaymentNumber(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getRepaymentDate().toString(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getRepaymentAmount().toString(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getPrincipalRepaymentAmount().toString(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getMonthlyInterest().toString(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getRepaymentBalance().toString(),
-                    calculateResult.getPrincepalAndInterestLoanDetails().get(i).getRepaymentInterest().toString()
+                    calculateResult.getLoanCashFlowDetails().get(i).getRepaymentNumber(),
+                    calculateResult.getLoanCashFlowDetails().get(i).getRepaymentDate().toString(),
+                    calculateResult.getLoanCashFlowDetails().get(i).getRepaymentAmount().toString(),
+                    calculateResult.getLoanCashFlowDetails().get(i).getPrincipalRepaymentAmount().toString(),
+                    calculateResult.getLoanCashFlowDetails().get(i).getMonthlyInterest().toString(),
+                    calculateResult.getLoanCashFlowDetails().get(i).getRepaymentBalance().toString(),
+                    calculateResult.getLoanCashFlowDetails().get(i).getRepaymentInterest().toString()
                 ));
         }
 
@@ -122,7 +123,7 @@ public class PrincepalAndInterestLoanService {
             calculateResult.getRepaymentNumber(),
             calculateResult.getTotalPaymentAmount(),
             calculateResult.getTotalInterestPaymentAmount(),
-            calculateResult.getPrincepalAndInterestLoanDetails()
+            calculateResult.getLoanCashFlowDetails()
         );
     }
 

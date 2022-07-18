@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.example.domain.domainservice.calculate.condition.calculateCondition;
 import com.example.domain.domainservice.calculate.processor.PrincepalAndInterestLoanProcessor;
-import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanDetails;
+import com.example.domain.domainservice.calculate.vo.LoanCashFlowDetails;
 import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanResult;
 
 /**
@@ -22,23 +22,20 @@ public class PrincepalAndInterestLoanCalculater {
          * @return ローン計算結果
          */
         public PrincepalAndInterestLoanResult calculate(calculateCondition condition) {
-
-                PrincepalAndInterestLoanProcessor princepalAndInterestLoanProcessor = new PrincepalAndInterestLoanProcessor();
-
                 // 日付から総返済回数を計算する
-                int repaymentNumber = princepalAndInterestLoanProcessor.calcRepaymentNumber(
+                int repaymentNumber = PrincepalAndInterestLoanProcessor.calcRepaymentNumber(
                                 // 返済開始日
                                 condition.getRepaymentStartDate(),
                                 // 返済終了日
                                 condition.getRepaymentEndDate());
 
                 // 年利から月利を計算する
-                BigDecimal monthlyRate = princepalAndInterestLoanProcessor.calcAnnualInterest(
+                BigDecimal monthlyRate = PrincepalAndInterestLoanProcessor.calcAnnualInterest(
                                 // 年利
                                 condition.getAnnualInterest());
 
                 // PMT値を計算する
-                BigDecimal pmt = princepalAndInterestLoanProcessor.calcPmt(
+                BigDecimal pmt = PrincepalAndInterestLoanProcessor.calcPmt(
                                 // 年利
                                 condition.getAnnualInterest(),
                                 // 返済回数
@@ -62,12 +59,12 @@ public class PrincepalAndInterestLoanCalculater {
                 BigDecimal repaymentAmount = BigDecimal.valueOf(0);
 
                 // キャッシュフローリストを定義
-                List<PrincepalAndInterestLoanDetails> details = new ArrayList<PrincepalAndInterestLoanDetails>();
+                List<LoanCashFlowDetails> details = new ArrayList<LoanCashFlowDetails>();
 
                 // 返済回数分処理を繰り返す
                 for (int number = 1; number <= repaymentNumber; number++) {
                         // 今回の返済年月日を計算する
-                        repaymentDate = princepalAndInterestLoanProcessor.calcRepaymentDate(
+                        repaymentDate = PrincepalAndInterestLoanProcessor.calcRepaymentDate(
                                         // 返済開始日
                                         condition.getRepaymentStartDate(),
                                         // 現在の返済日
@@ -76,11 +73,11 @@ public class PrincepalAndInterestLoanCalculater {
                                         number);
 
                         // 返済残高から今月の利息金額を計算する
-                        monthlyRepaymentInterest = princepalAndInterestLoanProcessor
+                        monthlyRepaymentInterest = PrincepalAndInterestLoanProcessor
                                         .calcRepaymentMonthlyInterest(monthlyRate, repaymentBalance);
 
                         // PMT値と返済利息から今月の元本返済金額を計算する
-                        principalRepaymentAmount = princepalAndInterestLoanProcessor.calcPrincipalRepaymentAmount(
+                        principalRepaymentAmount = PrincepalAndInterestLoanProcessor.calcPrincipalRepaymentAmount(
                                         // 今月の返済利息
                                         monthlyRepaymentInterest,
                                         // 現在の返済残高
@@ -95,7 +92,7 @@ public class PrincepalAndInterestLoanCalculater {
                         
 
                         // 元本返済金額から返済残高を計算する
-                        repaymentBalance = princepalAndInterestLoanProcessor.calcRepaymentBalance(
+                        repaymentBalance = PrincepalAndInterestLoanProcessor.calcRepaymentBalance(
                                         // 現在の返済残高
                                         repaymentBalance,
                                         // 今回の返済元本
@@ -106,25 +103,32 @@ public class PrincepalAndInterestLoanCalculater {
                                         number);
 
                         // 返済金額を計算する
-                        repaymentAmount = princepalAndInterestLoanProcessor.calcRepaymentAmount(principalRepaymentAmount, monthlyRepaymentInterest);
+                        repaymentAmount = PrincepalAndInterestLoanProcessor.calcRepaymentAmount(principalRepaymentAmount, monthlyRepaymentInterest);
 
                         // Detailsにキャッシュフローを追加する
-                        details.add( new PrincepalAndInterestLoanDetails(
-                                                        number,
-                                                        repaymentBalance,
-                                                        condition.getAnnualInterest(),
-                                                        repaymentAmount,
-                                                        principalRepaymentAmount,
-                                                        repaymentDate,
-                                                        monthlyRepaymentInterest));
+                        details.add( new LoanCashFlowDetails(
+                                // 今回の返済回数目
+                                number,
+                                // 残返済額
+                                repaymentBalance,
+                                // 適用年利
+                                condition.getAnnualInterest(),
+                                // 返済総額
+                                repaymentAmount,
+                                // 返済元本
+                                principalRepaymentAmount,
+                                // 返済日
+                                repaymentDate,
+                                // 返済利息 
+                                monthlyRepaymentInterest));
                 }
                 
                 // 総支払利息
-                BigDecimal totalInterestPaymentAmount = princepalAndInterestLoanProcessor
+                BigDecimal totalInterestPaymentAmount = PrincepalAndInterestLoanProcessor
                                 .calcTotalInterestPaymentAmount(details);
 
                 // 総支払金額
-                BigDecimal totalPaymentAmount = princepalAndInterestLoanProcessor
+                BigDecimal totalPaymentAmount = PrincepalAndInterestLoanProcessor
                                 .calcTotalBorrowingAmount(condition.getTotalBorrowingAmount(),
                                                 totalInterestPaymentAmount);
 

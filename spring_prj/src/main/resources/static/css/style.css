@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+}
+header {
+    color: #fff;
+    background-color: #000;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.6);
+    margin-bottom: 10px;
+}
+.header-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+main {
+    width: 100%;
+    min-height: 100vh;
+    color: #000;
+}
+footer {
+    color: #fff;
+    background-color: #000;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+/* テーブルレイアウト */
+table {
+    border: #000 solid 1px;
+    margin-top: 15px;
+}
+td {
+    border: #000 dotted 1px;
+}

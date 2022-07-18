@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanDetails;
+import com.example.domain.domainservice.calculate.vo.LoanCashFlowDetails;
 
 /**
  * ローン計算の計算式を実装します
@@ -20,7 +20,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param endDate   返済終了日
      * @return 総返済回数
      */
-    public int calcRepaymentNumber(LocalDate startDate, LocalDate endDate) {
+    public static int calcRepaymentNumber(LocalDate startDate, LocalDate endDate) {
         return Math.toIntExact(ChronoUnit.MONTHS.between(startDate, endDate)) + 1;
     }
 
@@ -30,7 +30,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param interestRate 年利
      * @return 月利
      */
-    public BigDecimal calcAnnualInterest(BigDecimal interestRate) {
+    public static BigDecimal calcAnnualInterest(BigDecimal interestRate) {
         return interestRate.divide(BigDecimal.valueOf(12), 40, BigDecimal.ROUND_DOWN);
     }
 
@@ -42,8 +42,8 @@ public class PrincepalAndInterestLoanProcessor {
      * @param repaymentBalance 返済残高 借入金額
      * @return PMT値 元本返済額
      */
-    public BigDecimal calcPmt(BigDecimal interestRate, int repaymentNumber, BigDecimal repaymentBalance) {
-        return new PmtProcessor().pmtCalculate(interestRate, repaymentNumber, repaymentBalance);
+    public static BigDecimal calcPmt(BigDecimal interestRate, int repaymentNumber, BigDecimal repaymentBalance) {
+        return PmtProcessor.pmtCalculate(interestRate, repaymentNumber, repaymentBalance);
     }
 
     /**
@@ -53,7 +53,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param repaymentBalance 返済残高 借入金額
      * @return 利息金額 元本返済額
      */
-    public BigDecimal calcRepaymentMonthlyInterest(BigDecimal interestRate, BigDecimal repaymentBalance) {
+    public static BigDecimal calcRepaymentMonthlyInterest(BigDecimal interestRate, BigDecimal repaymentBalance) {
         return repaymentBalance.multiply(interestRate).setScale(0, RoundingMode.DOWN);
     }
 
@@ -67,7 +67,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param number 現在の返済回数
      * @return 元本返済金額
      */
-    public BigDecimal calcPrincipalRepaymentAmount(BigDecimal monthlyRepaymentInterest, BigDecimal repaymentBalance, BigDecimal pmt,
+    public static BigDecimal calcPrincipalRepaymentAmount(BigDecimal monthlyRepaymentInterest, BigDecimal repaymentBalance, BigDecimal pmt,
             int repaymentNumber, int number) {
         // 返済最終回
         if (repaymentNumber == number) {
@@ -85,7 +85,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param number 現在の返済回数
      * @return 返済年月日
      */
-    public LocalDate calcRepaymentDate(LocalDate startDate, LocalDate repaymentDate, int number) {
+    public static LocalDate calcRepaymentDate(LocalDate startDate, LocalDate repaymentDate, int number) {
         // 返済初回
         if (number == 1) {
             return startDate;
@@ -103,7 +103,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param number 現在の返済回数
      * @return 返済残高
      */
-    public BigDecimal calcRepaymentBalance(BigDecimal repaymentBalance, BigDecimal repaymentAmount, int repaymentNumber,
+    public static BigDecimal calcRepaymentBalance(BigDecimal repaymentBalance, BigDecimal repaymentAmount, int repaymentNumber,
             int number) {
         // 返済最終回
         if (repaymentNumber == number) {
@@ -119,7 +119,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param details キャッシュフローリスト
      * @return 総返済利息
      */
-    public BigDecimal calcTotalInterestPaymentAmount(List<PrincepalAndInterestLoanDetails> details) {
+    public static BigDecimal calcTotalInterestPaymentAmount(List<LoanCashFlowDetails> details) {
         BigDecimal total = BigDecimal.valueOf(
                 details.stream().mapToInt(val -> val.getMonthlyInterest().intValue()).sum());
         return total;
@@ -132,7 +132,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param totalInterestPaymentAmount 総返済利息
      * @return 総返済金額
      */
-    public BigDecimal calcTotalBorrowingAmount(BigDecimal totalBorrowingAmount, BigDecimal totalInterestPaymentAmount) {
+    public static BigDecimal calcTotalBorrowingAmount(BigDecimal totalBorrowingAmount, BigDecimal totalInterestPaymentAmount) {
         return totalBorrowingAmount.add(totalInterestPaymentAmount);
     }
 
@@ -143,7 +143,7 @@ public class PrincepalAndInterestLoanProcessor {
      * @param monthlyRepaymentInterest
      * @return 返済金額
      */
-    public BigDecimal calcRepaymentAmount(BigDecimal principalRepaymentAmount, BigDecimal monthlyRepaymentInterest) {
+    public static BigDecimal calcRepaymentAmount(BigDecimal principalRepaymentAmount, BigDecimal monthlyRepaymentInterest) {
         return principalRepaymentAmount.add(monthlyRepaymentInterest);
     }
 }

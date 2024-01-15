@@ -1,4 +1,4 @@
-package com.example.application.controller;
+package com.example.presentation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,9 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-import com.example.domain.dto.request.LoanRequestDto;
-import com.example.domain.dto.response.LoanResponseDto;
-import com.example.domain.service.PrincepalAndInterestLoanService;
+import com.example.presentation.dto.request.LoanRequestDto;
+import com.example.presentation.dto.response.LoanResponseDto;
+import com.example.service.PrincepalAndInterestLoanService;
 
 /**
  * 画面からのリクエストを処理します

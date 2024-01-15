@@ -1,12 +1,12 @@
-package com.example.domain.domainservice.calculate.calculator;
+package com.example.domain.domainservice.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.example.domain.domainservice.calculate.condition.calculateCondition;
-import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanResult;
+import com.example.domain.condition.calculateCondition;
+import com.example.domain.vo.PrincepalAndInterestLoanResult;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

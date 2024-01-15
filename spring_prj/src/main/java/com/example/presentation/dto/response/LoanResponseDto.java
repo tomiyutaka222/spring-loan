@@ -3,7 +3,7 @@ package com.example.presentation.dto.response;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.example.domain.domainservice.calculate.vo.LoanCashFlowDetails;
+import com.example.domain.vo.LoanCashFlowDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.example.domain.domainservice.calculate.calculator.PrincepalAndInterestLoanCalculater;
-import com.example.domain.domainservice.calculate.condition.calculateCondition;
-import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanResult;
-import com.example.domain.dto.request.LoanRequestDto;
-import com.example.domain.dto.response.LoanResponseDto;
-import com.example.domain.repository.CashFlowRepository;
-import com.example.domain.repository.LoanSimulateResultRepository;
+import com.example.domain.domainservice.calculator.PrincepalAndInterestLoanCalculater;
+import com.example.domain.condition.calculateCondition;
+import com.example.domain.vo.PrincepalAndInterestLoanResult;
+import com.example.presentation.dto.request.LoanRequestDto;
+import com.example.presentation.dto.response.LoanResponseDto;
+import com.example.infrastructure.repository.CashFlowRepository;
+import com.example.infrastructure.repository.LoanSimulateResultRepository;
 import com.example.infrastructure.entity.CashFlowEntity;
 import com.example.infrastructure.entity.LoanSimulateResultEntity;
 

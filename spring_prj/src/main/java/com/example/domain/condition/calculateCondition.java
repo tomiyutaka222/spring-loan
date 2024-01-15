@@ -1,4 +1,4 @@
-package com.example.domain.domainservice.calculate.condition;
+package com.example.domain.domainservice.condition;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

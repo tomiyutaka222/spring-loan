@@ -13,7 +13,7 @@ import com.example.domain.dto.response.LoanResponseDto;
 import com.example.domain.service.PrincepalAndInterestLoanService;
 
 /**
- * アカウント情報に対してのリクエストを処理します
+ * 画面からのリクエストを処理します
  */
 @Controller
 public class LoanCalculateController {
@@ -21,6 +21,12 @@ public class LoanCalculateController {
     @Autowired
     PrincepalAndInterestLoanService princepalAndInterestLoanService;
 
+    /**
+     * リクエストURLからHTMLファイルを返却します。
+     * 
+     * @param ModelAndView mav
+     * @return 入力画面のHTMLファイル
+     */
     @RequestMapping("/")
 	public ModelAndView index(ModelAndView mav) {
         /* ModelAndViewClassを使用し、Viewへ渡すデータを作成する */
@@ -36,9 +42,11 @@ public class LoanCalculateController {
 	}
 
     /**
-     * アカウント情報を全件取得します
+     * 入力情報から元利均等ローン計算を行い、HTMLファイルを返却します。
      * 
-     * @return List<AccountEntity> アカウント情報リスト
+     * @param MultiValueMap loanRequest
+     * @param ModelAndView mav
+     * @return 計算結果画面のHTMLファイル
      */
     @RequestMapping(value = "/calculate", method = RequestMethod.POST)
     public ModelAndView calculatePrincepalAndInterestLoan(@RequestBody MultiValueMap loanRequest, ModelAndView mav) {

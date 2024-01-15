@@ -1,4 +1,4 @@
-package com.example.domain.domainservice.calculate.vo;
+package com.example.domain.domainservice.vo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

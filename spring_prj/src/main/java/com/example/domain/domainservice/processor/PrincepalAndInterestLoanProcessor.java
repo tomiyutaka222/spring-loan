@@ -1,4 +1,4 @@
-package com.example.domain.domainservice.calculate.processor;
+package com.example.domain.domainservice.processor;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.example.domain.domainservice.calculate.vo.LoanCashFlowDetails;
+import com.example.domain.domainservice.vo.LoanCashFlowDetails;
 
 /**
  * ローン計算の計算式を実装します

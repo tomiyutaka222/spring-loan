@@ -1,4 +1,4 @@
-package com.example.domain.repository;
+package com.example.infrastructure.repository;
 
 import com.example.infrastructure.entity.CashFlowEntity;
 

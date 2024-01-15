@@ -1,4 +1,4 @@
-package com.example.domain.domainservice.calculate.calculator;
+package com.example.domain.domainservice.calculator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import com.example.domain.domainservice.calculate.condition.calculateCondition;
 import com.example.domain.domainservice.calculate.processor.PrincepalAndInterestLoanProcessor;
-import com.example.domain.domainservice.calculate.vo.LoanCashFlowDetails;
-import com.example.domain.domainservice.calculate.vo.PrincepalAndInterestLoanResult;
+import com.example.domain.vo.LoanCashFlowDetails;
+import com.example.vo.PrincepalAndInterestLoanResult;
 
 /**
  * 元利均等型ローン計算式の組み立てを実装します

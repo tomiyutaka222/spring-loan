@@ -1,4 +1,4 @@
-package com.example.domain.domainservice.calculate.processor;
+package com.example.domain.domainservice.processor;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

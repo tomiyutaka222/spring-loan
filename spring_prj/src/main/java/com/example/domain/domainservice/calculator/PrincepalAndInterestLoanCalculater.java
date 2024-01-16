@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.domain.domainservice.calculate.condition.calculateCondition;
-import com.example.domain.domainservice.calculate.processor.PrincepalAndInterestLoanProcessor;
+import com.example.domain.domainservice.condition.calculateCondition;
+import com.example.domain.domainservice.processor.PrincepalAndInterestLoanProcessor;
 import com.example.domain.vo.LoanCashFlowDetails;
 import com.example.vo.PrincepalAndInterestLoanResult;
 

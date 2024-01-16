@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.example.domain.domainservice.vo.LoanCashFlowDetails;
+import com.example.domain.vo.LoanCashFlowDetails;
 
 /**
  * ローン計算の計算式を実装します

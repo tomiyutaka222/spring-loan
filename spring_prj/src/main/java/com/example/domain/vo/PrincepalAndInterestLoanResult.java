@@ -1,4 +1,4 @@
-package com.example.domain.domainservice.vo;
+package com.example.domain.vo;
 
 import java.math.BigDecimal;
 import java.util.List;

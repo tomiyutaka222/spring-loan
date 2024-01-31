@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.domain.domainservice.condition.calculateCondition;
+import com.example.domain.condition.calculateCondition;
 import com.example.domain.domainservice.processor.PrincepalAndInterestLoanProcessor;
 import com.example.domain.vo.LoanCashFlowDetails;
-import com.example.vo.PrincepalAndInterestLoanResult;
+import com.example.domain.vo.PrincepalAndInterestLoanResult;
 
 /**
  * 元利均等型ローン計算式の組み立てを実装します

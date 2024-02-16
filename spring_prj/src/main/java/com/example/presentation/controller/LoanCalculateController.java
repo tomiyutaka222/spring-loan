@@ -53,17 +53,17 @@ public class LoanCalculateController {
         // インプットをDTOに格納する
         LoanRequestDto loanRequestDto = new LoanRequestDto(
             // ユーザ名
-            Optional.of(loanRequest.toSingleValueMap().get("userName").toString()),
+            loanRequest.toSingleValueMap().get("userName").toString(),
             // 総返済額
-            Optional.of(loanRequest.toSingleValueMap().get("totalBorrowingAmount").toString()),
+            loanRequest.toSingleValueMap().get("totalBorrowingAmount").toString(),
             // 設定年利
-            Optional.of(loanRequest.toSingleValueMap().get("annualInterest").toString()),
+            loanRequest.toSingleValueMap().get("annualInterest").toString(),
             // 手数料
-            Optional.of(loanRequest.toSingleValueMap().get("commission").toString()),
+            loanRequest.toSingleValueMap().get("commission").toString(),
             // 返済開始日
-            Optional.of(loanRequest.toSingleValueMap().get("repaymentStartDate").toString()),
+            loanRequest.toSingleValueMap().get("repaymentStartDate").toString(),
             // 返済終了日
-            Optional.of(loanRequest.toSingleValueMap().get("repaymentEndDate").toString())
+            loanRequest.toSingleValueMap().get("repaymentEndDate").toString()
         );
 
         // 上で作ったDTOを引数に渡して、サービスクラスを呼び出す

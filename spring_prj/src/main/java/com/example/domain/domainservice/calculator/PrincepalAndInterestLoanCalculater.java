@@ -62,6 +62,7 @@ public class PrincepalAndInterestLoanCalculater {
                 List<LoanCashFlowDetails> details = new ArrayList<LoanCashFlowDetails>();
 
                 // 返済回数分処理を繰り返す
+                // TODO 繰り返し処理をFor文からStreamAPI若しくはForEachに置き換える
                 for (int number = 1; number <= repaymentNumber; number++) {
                         // 今回の返済年月日を計算する
                         repaymentDate = PrincepalAndInterestLoanProcessor.calcRepaymentDate(
